@@ -1,0 +1,99 @@
+/* ================= VARIABLES ================= */
+
+:root {
+    /* Оливковый — основной акцентный цвет (кнопки, активные элементы) */
+    --color-olive: #708238;
+    --color-olive-dark: #556B2F;
+    /* Для эффекта при наведении (hover) */
+
+    /* Белый — фон и чистые пространства */
+    --color-white: #FFFFFF;
+    --color-bg-light: #F9F9F7;
+    /* "Молочный" белый — приятнее для глаз, чем чисто белый */
+
+    /* Черный — основной текст */
+    --color-black: #1A1A1A;
+    /* Мягкий черный (не режет глаза) */
+
+    /* Темно-коричневый — заголовки, футер или второстепенный текст */
+    --color-brown: #3E2723;
+    --color-brown-light: #5D4037;
+}
+
+/* ================= RESET ================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    /* background-image: url("./images/bg-fons.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed; */
+
+    color: var(--color-black);
+    background-color: var(--color-bg-light);
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 20px;
+}
+
+/* ================= TYPOGRAPHY ================= */
+h1,
+h2,
+h3 {
+    letter-spacing: 2px;
+}
+
+.text-control {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.text-control h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.text-control p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+/* ================= GLOBAL ELEMENTS ================= */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    font: inherit;
+}
+
+input {
+    border: none;
+    font: inherit;
+    outline: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.header{
+    background-color: var(--color-olive);
+}
+

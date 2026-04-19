@@ -15,33 +15,96 @@
 
 <body>
 
-<header class="header">
-    <div class="header-container">
+    <header class="header">
+        <div class="header-container">
 
-        <!-- LOGO -->
-        <div class="header-logo">
-            <a href="/" class="logo-link">
-                <img class="logo-img" src="./icons/logo.svg" alt="Home-Chef logo">
-            </a>
+            <!-- LOGO -->
+            <div class="header-logo">
+                <a href="/" class="logo-link">
+                    <img class="logo-img" src="./icons/logo.svg" alt="Home-Chef logo">
+                </a>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="header-actions">
+
+                <button class="search-btn header-btn" aria-label="Пошук">
+                    <img src="./icons/search.svg" alt="">
+                </button>
+
+                <button class="add-recipe-btn header-btn" aria-label="Додати рецепт">
+                    <img src="./icons/plus.svg" alt="">
+                </button>
+
+            </div>
+
         </div>
-
-        <!-- ACTION BUTTONS -->
-        <div class="header-actions">
-
-            <button class="search-btn" aria-label="Пошук">
-                <img src="./icons/search.svg" alt="">
-            </button>
-
-            <button class="add-recipe-btn" aria-label="Додати рецепт">
-                <img src="./icons/plus.svg" alt="">
-            </button>
-
-        </div>
-
-    </div>
-</header>
+    </header>
 
     <main class="main">
+
+        <section class="about-section section">
+            <h1 class="about-title">Home-Chef</h1>
+
+            <div class="description-wrap">
+                <p class="about-description">Ваш особистий помічник у світі кулінарії. Зберігайте, організовуйте та
+                    відкривайте для себе нові рецепти з легкістю.</p>
+                <p class="about-description">Ми збираємо найкращі рецепти з усього світу, щоб кожна ваша вечеря
+                    перетворювалася на
+                    маленьке свято. Готуйте з нами легко та із задоволенням!</p>
+            </div>
+
+            <div class="about-stats">
+                <div class="stat-item"><b>500+</b> рецептів</div>
+                <div class="stat-item"><b>15</b> авторів</div>
+            </div>
+
+        </section>
+
+        <section class="recipes-section section">
+            <h2 class="recipes-title">Рецепти</h2>
+            <p class="recipes-description">
+                Відкрийте для себе світ кулінарних шедеврів з Home-Chef! Наша колекція рецептів охоплює всі
+                категорії - від швидких сніданків до вишуканих вечерь та солодких десертів. Використовуйте зручні
+                фільтри, щоб знайти ідеальний рецепт для будь-якого випадку. Готуйте з легкістю та насолоджуйтеся
+                кожною стравою!
+            </p>
+
+            <div class="recipes-layout">
+
+                <aside class="recipes-filter">
+
+                    <div class="filter-group">
+                        <input type="text" id="searchInput" class="filter-input" placeholder="Пошук рецептів...">
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-title">Категорії</h4>
+                        <div class="filter-options">
+                            <button class="filter-btn active" data-category="all">Всі рецепти</button>
+                            <button class="filter-btn" data-category="breakfast">Сніданки</button>
+                            <button class="filter-btn" data-category="lunch">Обіди</button>
+                            <button class="filter-btn" data-category="dinner">Вечері</button>
+                            <button class="filter-btn" data-category="dessert">Десерти</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-title">Час приготування</h4>
+                        <select id="timeFilter" class="filter-input">
+                            <option value="all">Будь-який час</option>
+                            <option value="15">До 15 хвилин</option>
+                            <option value="30">До 30 хвилин</option>
+                            <option value="60">До 1 години</option>
+                        </select>
+                    </div>
+
+                </aside>
+
+                <div class="recipes-grid">
+                </div>
+            </div>
+        </section>
 
     </main>
 

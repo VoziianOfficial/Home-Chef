@@ -31,7 +31,6 @@ body {
     font-family: var(--font-main);
     line-height: 1.5;
     overflow-x: hidden;
-    /* Защита от горизонтального скролла */
 }
 
 img {
@@ -46,7 +45,9 @@ button {
     background: none;
 }
 
-input {
+input,
+select,
+textarea {
     outline: none;
     font: inherit;
 }
@@ -133,6 +134,8 @@ h3 {
 .about-section>* {
     position: relative;
     z-index: 2;
+    max-width: 1200px;
+    width: 100%;
 }
 
 .about-title {
@@ -143,23 +146,36 @@ h3 {
 }
 
 .about-description {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     color: var(--color-white);
-    max-width: 800px;
-    margin: 0 auto 20px;
-    font-weight: 300;
+    max-width: 1000px;
+    margin: 0 auto 30px;
+    font-weight: 500;
+    line-height: 1.6;
 }
 
 .about-stats {
     display: flex;
-    gap: 50px;
-    margin-top: 40px;
+    justify-content: space-around;
+    align-items: center;
+    margin: 60px auto 0;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 800px;
     color: var(--color-white);
+}
+
+.stat-item {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .stat-item b {
     display: block;
-    font-size: 3.5rem;
+    font-size: 4rem;
+    margin-bottom: 5px;
+    color: var(--color-olive);
 }
 
 /* ================= RECIPES LAYOUT (DESKTOP) ================= */
@@ -170,13 +186,13 @@ h3 {
 }
 
 .recipes-description {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto 40px;
     text-align: center;
     padding: 0 20px;
+    font-weight: 500;
 }
 
-/* Кнопка фильтра (скрыта на десктопе) */
 .mobile-filter-wrapper {
     display: none;
 }
@@ -185,12 +201,13 @@ h3 {
     display: grid;
     grid-template-columns: 280px 1fr;
     gap: 40px;
-    max-width: 1300px;
+    max-width: 1600px;
+    /* Широкий контейнер для 4 карток */
     margin: 0 auto;
-    padding: 0 20px 40px;
+    padding: 0 40px 40px;
 }
 
-/* ФИЛЬТР (DESKTOP) */
+/* ================= ФІЛЬТР ================= */
 .recipes-filter {
     background: var(--color-white);
     padding: 25px;
@@ -203,6 +220,29 @@ h3 {
 
 .filter-group {
     margin-bottom: 25px;
+}
+
+.filter-input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+select.filter-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: var(--font-main);
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    padding-right: 48px;
+}
+
+select.filter-input::-ms-expand {
+    display: none;
 }
 
 .filter-title {
@@ -230,18 +270,19 @@ h3 {
     color: var(--color-white);
 }
 
-/* ГРИД КАРТОЧЕК */
+/* ================= ГРИД КАРТОЧОК ================= */
 .recipes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 280px);
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 30px;
-    justify-content: center;
+    align-items: stretch;
 }
 
 /* ================= RECIPE CARD ================= */
 .recipe-card {
-    width: 280px;
-    min-height: 420px;
+    width: 100%;
+    min-height: 380px;
+    height: 100%;
     background: var(--color-white);
     border-radius: 20px;
     overflow: hidden;
@@ -260,6 +301,7 @@ h3 {
     width: 100%;
     height: 200px;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .recipe-img-wrapper img {
@@ -306,14 +348,37 @@ h3 {
     font-weight: 600;
 }
 
+/* ================= LOAD MORE BUTTON ================= */
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.load-more-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--color-olive);
+    color: white;
+    padding: 12px 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.load-more-button:hover {
+    background-color: var(--color-olive-dark);
+    transform: scale(1.05);
+}
+
 /* ================= MOBILE & TABLET (ADAPTIVE) ================= */
 @media screen and (max-width: 1024px) {
     .recipes-layout {
         display: block;
-        /* Убираем колонки */
     }
 
-    /* Показываем кнопку открытия фильтра */
     .mobile-filter-wrapper {
         display: flex;
         justify-content: center;
@@ -328,12 +393,10 @@ h3 {
         font-weight: 600;
     }
 
-    /* Прячем фильтр в боковую панель */
     .recipes-filter {
         position: fixed;
         top: 0;
         left: -100%;
-        /* Уехал влево */
         width: 300px;
         height: 100vh;
         z-index: 1000;
@@ -345,9 +408,6 @@ h3 {
         left: 0;
     }
 
-    /* Выехал */
-
-    /* Затемнение фона */
     .filter-overlay {
         position: fixed;
         top: 0;
@@ -370,34 +430,4 @@ h3 {
         text-align: right;
         width: 100%;
     }
-}
-
-/* Кнопка "Показати ще" */
-/* Контейнер для выравнивания */
-.load-more-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-/* Сама кнопка */
-.load-more-button {
-    display: flex;
-    /* Позволяет иконке и тексту быть в ряд */
-    align-items: center;
-    /* Центрирует текст по вертикали */
-    gap: 8px;
-    /* Расстояние между иконкой и текстом */
-
-    background-color: var(--color-olive);
-    color: white;
-    padding: 12px 40px;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.load-more-button:hover {
-    background-color: var(--color-olive-dark);
-    transform: scale(1.05);
 }

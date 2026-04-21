@@ -23,14 +23,32 @@ function createCard(recipe) {
     </a>`;
 }
 
-if (recipesGrid) {
-    let html = '';
 
-    recipes.forEach(function (recipe) {
-        html += createCard(recipe);
-    });
+function renderRecipes(recipesArray) {
+    if (!recipesGrid) return;
+        let html = '';
 
-    recipesGrid.innerHTML = html;
+        recipesArray.forEach(function (recipe) {
+            html += createCard(recipe);
+        });
+
+        recipesGrid.innerHTML = html;
+    
 }
 
-//
+renderRecipes(recipes);
+
+const searchInput = document.getElementById('searchInput');
+    
+    
+searchInput.addEventListener('input', () => { 
+    let query = searchInput.value.toLowerCase();
+    console.log("Користувач друкує:", query);
+
+    let filterRecipes = recipes.filter(function (recipe) {
+        return recipe.title.toLowerCase().includes(query);
+    });
+
+    renderRecipes(filterRecipes);
+    
+})
